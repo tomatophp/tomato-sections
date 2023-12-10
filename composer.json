@@ -1,0 +1,47 @@
+{
+    "name": "tomatophp/tomato-sections",
+    "type": "library",
+    "description": "Sections For Tomato Themes To build any app with Theme Builder",
+    "keywords": [
+        "php",
+        "laravel",
+        "themes",
+        "sections",
+        "tomato-themes",
+        "tomato-ecommerce",
+        "tomato-cms",
+        "tomato-crm",
+        "tomatophp"
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "TomatoPHP\\TomatoSections\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TomatoPHP\\TomatoSections\\TomatoSectionsServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Fady Mondy",
+            "email": "info@3x1.io"
+        }
+    ],
+    "require": {
+        "php": "^8.1|^8.2",
+        "tomatophp/tomato-ecommerce": "^1.0",
+        "tomatophp/tomato-cms": "^1.1",
+        "tomatophp/tomato-themes": "^1.1",
+        "tomatophp/console-helpers": "^1.1"
+    }
+}
