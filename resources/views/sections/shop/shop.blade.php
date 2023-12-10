@@ -14,17 +14,17 @@
     <x-splade-data default="{showMenu: false}">
         <div class="bg-white">
             <div>
-                @include('tomato-sections::shop.partials.mobile-filter')
+                @include('tomato-sections::sections.shop.partials.mobile-filter')
 
                 <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    @include('tomato-sections::shop.partials.header', ['title' => $section['title_'.app()->getLocale()] ?? __('Shop')])
+                    @include('tomato-sections::sections.shop.partials.header', ['title' => $section['title_'.app()->getLocale()] ?? __('Shop')])
 
                     <section aria-labelledby="products-heading" class="pb-24 pt-6">
                         <h2 id="products-heading" class="sr-only">{{__('Products')}}</h2>
 
                         <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                             <x-splade-form method="GET" action="{{url('shop')}}" submit-on-change>
-                                @include('tomato-sections::shop.partials.web-filter', ['options' => $options])
+                                @include('tomato-sections::sections.shop.partials.web-filter', ['options' => $options])
                             </x-splade-form>
 
                             <!-- Product grid -->
@@ -35,7 +35,7 @@
 
                                         <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
                                             @foreach($products as $product)
-                                                @include('tomato-sections::shop.partials.product-card')
+                                                @include('tomato-sections::sections.shop.partials.product-card')
                                             @endforeach
                                         </div>
 

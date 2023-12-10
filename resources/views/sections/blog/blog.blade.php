@@ -48,7 +48,7 @@
                 <!-- component -->
                 <div class="grid grid-cols-1 gap-4 lg:gap-8 sm:grid-cols-1 lg:grid-cols-2 font-main">
                     @foreach ($posts as $post)
-                        @include('tomato-sections::blog.parts.blog-card')
+                        @include('tomato-sections::sections.blog.parts.blog-card')
                     @endforeach
                 </div>
                 <div class="px-8 py-8 lg:gap-8 font-main">

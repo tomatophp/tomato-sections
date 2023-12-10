@@ -10,6 +10,8 @@
         <x-splade-input class="w-full" label="{{__('Button [AR]')}}" name="button_ar" placeholder="{{__('Button [AR]')}}" />
         <x-splade-input class="w-full" label="{{__('Button [EN]')}}" name="button_en" placeholder="{{__('Button [EN]')}}" />
     </div>
+    <x-tomato-admin-color label="{{__('Background Color')}}" name="bg_color" placeholder="{{__('Background Color')}}" />
+    <x-tomato-admin-color label="{{__('Font Color')}}" name="font_color" placeholder="{{__('Font Color')}}" />
     <x-splade-select
         choices
         label="{{__('Features')}}"

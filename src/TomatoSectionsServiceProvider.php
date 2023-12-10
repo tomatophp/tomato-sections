@@ -4,6 +4,7 @@ namespace TomatoPHP\TomatoSections;
 
 use Illuminate\Support\ServiceProvider;
 use TomatoPHP\TomatoSections\Sections\TomatoAboutFeaturesSection;
+use TomatoPHP\TomatoSections\Sections\TomatoBlogIndex;
 use TomatoPHP\TomatoSections\Sections\TomatoBlogSection;
 use TomatoPHP\TomatoSections\Sections\TomatoCategorySection;
 use TomatoPHP\TomatoSections\Sections\TomatoContactUsSection;
@@ -14,9 +15,13 @@ use TomatoPHP\TomatoSections\Sections\TomatoHeaderSection;
 use TomatoPHP\TomatoSections\Sections\TomatoHeroSection;
 use TomatoPHP\TomatoSections\Sections\TomatoPageBodySection;
 use TomatoPHP\TomatoSections\Sections\TomatoPageTitleSection;
+use TomatoPHP\TomatoSections\Sections\TomatoPortfolioIndex;
 use TomatoPHP\TomatoSections\Sections\TomatoPortfolioSection;
 use TomatoPHP\TomatoSections\Sections\TomatoProductsSection;
+use TomatoPHP\TomatoSections\Sections\TomatoServicesSection;
 use TomatoPHP\TomatoSections\Sections\TomatoShopSection;
+use TomatoPHP\TomatoSections\Sections\TomatoSkillsSection;
+use TomatoPHP\TomatoSections\Sections\TomatoTestimonialsSection;
 use TomatoPHP\TomatoThemes\Facades\TomatoThemes;
 
 
@@ -91,5 +96,10 @@ class TomatoSectionsServiceProvider extends ServiceProvider
         TomatoThemes::registerSection(new TomatoPortfolioSection());
         TomatoThemes::registerSection(new TomatoProductsSection());
         TomatoThemes::registerSection(new TomatoShopSection());
+        TomatoThemes::registerSection(new TomatoPortfolioIndex());
+        TomatoThemes::registerSection(new TomatoSkillsSection());
+        TomatoThemes::registerSection(new TomatoTestimonialsSection());
+        TomatoThemes::registerSection(new TomatoServicesSection());
+        TomatoThemes::registerSection(new TomatoBlogIndex());
     }
 }

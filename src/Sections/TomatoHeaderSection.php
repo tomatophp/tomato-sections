@@ -9,11 +9,11 @@ class TomatoHeaderSection extends Section
     public ?string $label = null;
     public ?string $group = "headers";
     public ?string $icon = "bx bx-menu";
-    public ?string $description = "use it to show categories in home page";
+    public ?string $description = "main header for any page as a layout header";
 
     public function label(): string
     {
-        return __('Tomato Header');
+        return __('Header');
     }
 
     public function form(): string

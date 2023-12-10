@@ -7,13 +7,13 @@ use TomatoPHP\TomatoThemes\Services\Abstract\Section;
 class TomatoPortfolioSection extends Section
 {
     public ?string $label = null;
-    public ?string $group = "sections";
+    public ?string $group = "cms";
     public ?string $icon = "bx bx-image";
-    public ?string $description = "use it to show faq in home page";
+    public ?string $description = "a protfolio selected sections to show your best projects";
 
     public function label(): string
     {
-        return __('Tomato Portfolio');
+        return __('Portfolio Section');
     }
 
     public function form(): string
@@ -23,7 +23,7 @@ class TomatoPortfolioSection extends Section
 
     public function section(): string
     {
-        return 'tomato-sections::sections.cms.projects';
+        return 'tomato-sections::sections.projects.projects';
     }
 
     public function config(): array

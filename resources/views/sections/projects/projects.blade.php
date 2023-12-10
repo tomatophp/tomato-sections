@@ -1,12 +1,12 @@
 @php $section = $page->meta($section['uuid']); @endphp
-<section class="bg-gray-50 font-main">
+<section class="font-main"  style="background-color: {{$section['bg_color'] ?? '#efefef'}}; color: {{$section['font_color'] ?? '#000'}}">
     <div class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
         <div class="text-center">
             <h1 class="text-4xl font-bold tracking-tight text-center sm:text-3xl text-main">
                 {{$section['title_' . app()->getLocale()] ?? __("Best Projects")}}
             </h1>
 
-            <p class="mx-auto mt-4 text-gray-700 max-w-[45ch]">
+            <p class="mx-auto mt-4 max-w-[45ch]">
                 {{$section['description_' . app()->getLocale()] ?? __("My work speaks for me, and here you will find the best work that I have accomplished over the past years")}}
             </p>
         </div>
@@ -23,7 +23,7 @@
                         $image = "https://ui-avatars.com/api/?name=".$project->title;
                     }
                 @endphp
-                <div class="block">
+                <x-splade-link href="{{url('projects/'. $project->id)}}" class="block">
                     <article
                         class="relative overflow-hidden rounded-lg shadow transition hover:shadow-lg"
                     >
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                     </article>
-                </div>
+                </x-splade-link>
             @endforeach
         </div>
         <div class="flex justify-start">
@@ -71,7 +71,6 @@
                     <span class="text-xl font-bold">→</span>
                 @endif
             </x-splade-link>
-
         </div>
     </div>
 </section>

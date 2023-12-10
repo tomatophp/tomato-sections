@@ -38,6 +38,6 @@
             @endforeach
         </div>
 
-        {!! $questions->links('themes::sections.pagination') !!}
+        {!! $questions->links('tomato-sections::sections.pagination') !!}
     </main>
 </div>

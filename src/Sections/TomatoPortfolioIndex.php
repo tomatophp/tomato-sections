@@ -4,26 +4,26 @@ namespace TomatoPHP\TomatoSections\Sections;
 
 use TomatoPHP\TomatoThemes\Services\Abstract\Section;
 
-class TomatoCategorySection extends Section
+class TomatoPortfolioIndex extends Section
 {
     public ?string $label = null;
     public ?string $group = "cms";
-    public ?string $icon = "bx bx-category";
-    public ?string $description = "show category with images";
+    public ?string $icon = "bx bxs-landscape";
+    public ?string $description = "a protfolio index to show all projects with crud and filters";
 
     public function label(): string
     {
-        return __('Category');
+        return __('Portfolio');
     }
 
     public function form(): string
     {
-        return 'tomato-sections::sections.forms.category';
+        return 'tomato-sections::sections.forms.projects-index';
     }
 
     public function section(): string
     {
-        return 'tomato-sections::sections.shop.category';
+        return 'tomato-sections::sections.projects.projects-index';
     }
 
     public function config(): array

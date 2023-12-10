@@ -1,5 +1,5 @@
 @php $section = $page->meta($section['uuid']); @endphp
-<div class="font-main my-4 mx-16">
+<div class="font-main py-8 px-16"  style="background-color: {{$section['bg_color'] ?? '#fff'}}; color: {{$section['font_color'] ?? '#000'}}">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-8 lg:gap-x-16 lg:items-center">
         <div class="max-w-lg mx-auto  lg:mx-0">
             <h2 class="text-3xl font-bold sm:text-4xl text-main">
@@ -26,6 +26,7 @@
             @php $features = \TomatoPHP\TomatoThemes\Models\Feature::whereIn('id', $section['features'] ?? [])->get(); @endphp
             @foreach($features as $feature)
                 <div class="
+                bg-white
                             block
                             p-4
                             border
@@ -43,7 +44,7 @@
                             <i class="{{$feature->icon}} bx-sm"></i>
                         </span>
 
-                    <h6 class="mt-2 font-bold">
+                    <h6 class="mt-2 font-bold text-black">
                         {{$feature->title}}
                     </h6>
 

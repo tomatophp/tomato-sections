@@ -7,13 +7,13 @@ use TomatoPHP\TomatoThemes\Services\Abstract\Section;
 class TomatoAboutFeaturesSection extends Section
 {
     public ?string $label = null;
-    public ?string $group = "sections";
+    public ?string $group = "cms";
     public ?string $icon = "bx bx-cheese";
-    public ?string $description = "use it to show features in home page";
+    public ?string $description = "show blocks of feature with main title and section and button";
 
     public function label(): string
     {
-        return __('Tomato About Features');
+        return __('Features Blocks');
     }
 
     public function form(): string

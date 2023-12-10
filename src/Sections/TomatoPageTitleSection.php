@@ -7,13 +7,13 @@ use TomatoPHP\TomatoThemes\Services\Abstract\Section;
 class TomatoPageTitleSection extends Section
 {
     public ?string $label = null;
-    public ?string $group = "headers";
+    public ?string $group = "pages";
     public ?string $icon = "bx bx-bold";
-    public ?string $description = "use it to show faq in home page";
+    public ?string $description = "add a title for a page and some informations about current page";
 
     public function label(): string
     {
-        return __('Tomato Page Title');
+        return __('Page Title');
     }
 
     public function form(): string

@@ -7,13 +7,13 @@ use TomatoPHP\TomatoThemes\Services\Abstract\Section;
 class TomatoPageBodySection extends Section
 {
     public ?string $label = null;
-    public ?string $group = "sections";
+    public ?string $group = "pages";
     public ?string $icon = "bx bx-text";
-    public ?string $description = "use it to show page body in home page";
+    public ?string $description = "use to get the body of the page inside your page builder";
 
     public function label(): string
     {
-        return __('Tomato Page Body');
+        return __('Page Body');
     }
 
     public function form(): string

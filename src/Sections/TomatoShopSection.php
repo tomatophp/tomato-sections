@@ -7,13 +7,13 @@ use TomatoPHP\TomatoThemes\Services\Abstract\Section;
 class TomatoShopSection extends Section
 {
     public ?string $label = null;
-    public ?string $group = "sections";
+    public ?string $group = "ecommerce";
     public ?string $icon = "bx bx-store";
-    public ?string $description = "use it to show categories in home page";
+    public ?string $description = "a full shop index with products and filters";
 
     public function label(): string
     {
-        return __('Tomato Shop');
+        return __('Shop');
     }
 
     public function form(): string

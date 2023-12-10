@@ -4,26 +4,26 @@ namespace TomatoPHP\TomatoSections\Sections;
 
 use TomatoPHP\TomatoThemes\Services\Abstract\Section;
 
-class TomatoHeroSection extends Section
+class TomatoBlogIndex extends Section
 {
     public ?string $label = null;
-    public ?string $group = "pages";
-    public ?string $icon = "bx bx-home";
-    public ?string $description = "hero section for homepage ecommerce";
+    public ?string $group = "blog";
+    public ?string $icon = "bx bx-paperclip";
+    public ?string $description = "show blog index posts with any type of posts";
 
     public function label(): string
     {
-        return __('Hero');
+        return __('Blog');
     }
 
     public function form(): string
     {
-        return 'tomato-sections::sections.forms.hero';
+        return 'tomato-sections::sections.forms.blog';
     }
 
     public function section(): string
     {
-        return 'tomato-sections::sections.pages.hero';
+        return 'tomato-sections::sections.blog.blog';
     }
 
     public function config(): array

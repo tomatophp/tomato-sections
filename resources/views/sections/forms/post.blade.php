@@ -7,10 +7,10 @@
     <x-tomato-admin-color label="{{__('Font Color')}}" name="font_color" placeholder="{{__('Font Color')}}" />
     <x-splade-select
         choices
-        label="{{__('Categories')}}"
-        name="categories"
-        :options="\TomatoPHP\TomatoCategory\Models\Category::where('for', 'product-categories')->get()"
-        option-label="name"
+        label="{{__('Posts')}}"
+        name="posts"
+        :options="\TomatoPHP\TomatoCms\Models\Post::where('activated',1)->get()"
+        option-label="title"
         option-value="id"
         multiple
     />

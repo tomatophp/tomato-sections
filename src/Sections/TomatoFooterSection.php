@@ -9,11 +9,11 @@ class TomatoFooterSection extends Section
     public ?string $label = null;
     public ?string $group = "footers";
     public ?string $icon = "bx bx-copyright";
-    public ?string $description = "use it to show categories in home page";
+    public ?string $description = "main footer for any page as a layout footer";
 
     public function label(): string
     {
-        return __('Tomato Footer');
+        return __('Footer');
     }
 
     public function form(): string

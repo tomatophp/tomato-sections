@@ -5,15 +5,16 @@
     </div>
     <x-splade-textarea label="{{__('Description [AR]')}}" name="description_ar" placeholder="{{__('Description [AR]')}}" />
     <x-splade-textarea label="{{__('Description [EN]')}}" name="description_en" placeholder="{{__('Description [AR]')}}" />
-    <x-tomato-admin-color label="{{__('Background Color')}}" name="bg_color" placeholder="{{__('Background Color')}}" />
-    <x-tomato-admin-color label="{{__('Font Color')}}" name="font_color" placeholder="{{__('Font Color')}}" />
     <x-splade-select
         choices
-        label="{{__('Projects')}}"
-        name="projects"
-        :options="\TomatoPHP\TomatoCms\Models\Portfolio::all()"
-        option-label="title"
+        label="{{__('Skills')}}"
+        name="skills"
+        :options="\TomatoPHP\TomatoCms\Models\Skill::all()"
+        option-label="name"
         option-value="id"
         multiple
     />
+    <x-splade-checkbox label="{{__('Is Random')}}" name="is_random" />
+    <x-tomato-admin-color label="{{__('Background Color')}}" name="bg_color" placeholder="{{__('Background Color')}}" />
+    <x-tomato-admin-color label="{{__('Font Color')}}" name="font_color" placeholder="{{__('Font Color')}}" />
 </div>

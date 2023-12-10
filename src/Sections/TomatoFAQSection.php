@@ -7,13 +7,13 @@ use TomatoPHP\TomatoThemes\Services\Abstract\Section;
 class TomatoFAQSection extends Section
 {
     public ?string $label = null;
-    public ?string $group = "sections";
+    public ?string $group = "support";
     public ?string $icon = "bx bx-question-mark";
-    public ?string $description = "use it to show faq in home page";
+    public ?string $description = "show all FAQ questions with pagination";
 
     public function label(): string
     {
-        return __('Tomato FAQ');
+        return __('FAQ');
     }
 
     public function form(): string

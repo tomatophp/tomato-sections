@@ -7,13 +7,13 @@ use TomatoPHP\TomatoThemes\Services\Abstract\Section;
 class TomatoContactUsSection extends Section
 {
     public ?string $label = null;
-    public ?string $group = "sections";
+    public ?string $group = "support";
     public ?string $icon = "bx bx-phone";
-    public ?string $description = "use it to show contact us in home page";
+    public ?string $description = "show up a contact form with contact informations from you app settings";
 
     public function label(): string
     {
-        return __('Tomato Contact Us');
+        return __('Contact Us');
     }
 
     public function form(): string

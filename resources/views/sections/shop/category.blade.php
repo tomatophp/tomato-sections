@@ -1,6 +1,6 @@
 @php $section = $page->meta($section['uuid']); @endphp
 <section>
-    <div class="bg-gray-100">
+    <div style="background-color: {{$section['bg_color'] ?? '#efefef'}}; color: {{$section['font_color'] ?? '#000'}}">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
                 <h2 class="text-2xl font-bold text-gray-900">{{ $section['title_'. app()->getLocale()] ?? "Categories" }}</h2>

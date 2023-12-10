@@ -7,23 +7,23 @@ use TomatoPHP\TomatoThemes\Services\Abstract\Section;
 class TomatoBlogSection extends Section
 {
     public ?string $label = null;
-    public ?string $group = "sections";
-    public ?string $icon = "bx bx-paperclip";
-    public ?string $description = "use it to show blogs in home page";
+    public ?string $group = "blog";
+    public ?string $icon = "bx bx-repost";
+    public ?string $description = "show selected posts as a section";
 
     public function label(): string
     {
-        return __('Tomato Blog');
+        return __('Blog Section');
     }
 
     public function form(): string
     {
-        return 'tomato-sections::sections.forms.blog';
+        return 'tomato-sections::sections.forms.post';
     }
 
     public function section(): string
     {
-        return 'tomato-sections::sections.blog.blog';
+        return 'tomato-sections::sections.blog.post';
     }
 
     public function config(): array
