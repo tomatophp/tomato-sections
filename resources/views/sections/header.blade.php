@@ -27,10 +27,11 @@
 
             <div class="flex items-center gap-4">
                 <div class="flex items-center gap-4">
-                    <x-splade-form method="GET" action="{{url('shop')}}" class="relative">
+                    <x-splade-form method="GET" action="{{url('shop')}}" class="hidden lg:block relative border border-gray-500 rounded-full" :default="['search' => request()->search ?? '']">
                         <label class="sr-only" for="search"> {{__('Search')}} </label>
 
                         <input
+
                             class="h-10 w-full rounded-full border-none bg-white pe-10 ps-4 text-sm shadow-sm sm:w-56"
                             id="search"
                             v-model="form.search"
@@ -40,7 +41,7 @@
 
                         <button
                             type="button"
-                            class="absolute end-1 top-1/2 -translate-y-1/2 rounded-full bg-gray-50 p-2 text-gray-600 transition hover:text-gray-700"
+                            class="absolute end-1 top-1/2 -translate-y-1/2 rounded-full bg-gray-50 p-2 text-gray-600   transition hover:text-gray-700"
                         >
                             <span class="sr-only">{{__('Search')}}</span>
                             <svg
@@ -61,27 +62,64 @@
                     </x-splade-form>
 
                     <x-splade-link
-                        slideover
+                        modal
                         :href="route('cart.cart')"
-                        class="block shrink-0 rounded-full bg-white p-2.5 text-gray-600 shadow-sm hover:text-gray-700"
+                        class="block shrink-0 rounded-full border border-gray-500 p-2 text-gray-600 shadow-sm hover:text-gray-700 relative group"
                     >
+                        @php
+                            $cart = \TomatoPHP\TomatoEcommerce\Models\Cart::where('session_id', \Illuminate\Support\Facades\Cookie::get('cart'))->count();
+                        @endphp
+                        @if($cart)
+                            <div class="absolute top-0 font-bold left-6 bg-white border border-gray-500 shadow-sm text-gray-500 rounded-full text-[10px] w-4 h-4 text-center">
+                                {{ $cart }}
+                            </div>
+                        @endif
                         <span class="sr-only">{{__('Cart')}}</span>
-                        <div class="flex flex-col justify-center items-center">
-                            <i class="bx bx-cart text-md"></i>
+                        <div class="flex flex-col justify-center items-center text-gray-500 group-hover:text-warning-500 cursor-pointer transition-colors ease-in-out duration-30">
+                            <i class="bx bxs-cart text-lg"></i>
                         </div>
                     </x-splade-link>
 
-{{--                    @if(auth('accounts')->user())--}}
-{{--                        <a--}}
-{{--                            href="#"--}}
-{{--                            class="block shrink-0 rounded-full bg-white p-2.5 text-gray-600 shadow-sm hover:text-gray-700"--}}
-{{--                        >--}}
-{{--                            <span class="sr-only">{{__('Notifications')}}</span>--}}
-{{--                            <div class="flex flex-col justify-center items-center">--}}
-{{--                                <i class="bx bx-bell text-md"></i>--}}
-{{--                            </div>--}}
-{{--                        </a>--}}
-{{--                    @endif--}}
+
+                    @if(auth('accounts')->user())
+                        <x-splade-link
+                            modal
+                            :href="route('profile.wishlist.index')"
+                            class="block shrink-0 rounded-full border border-gray-500 p-2 text-gray-600 shadow-sm hover:text-gray-700 relative group"
+                        >
+                            @php
+                                $wishlist = \TomatoPHP\TomatoEcommerce\Models\Wishlist::where('account_id', auth('accounts')->user()->id)->count();
+                            @endphp
+                            @if($wishlist)
+                                <div class="absolute top-0 font-bold left-6 bg-white border border-gray-500 shadow-sm text-gray-500 rounded-full text-[10px] w-4 h-4 text-center">
+                                    {{ $wishlist }}
+                                </div>
+                            @endif
+                            <span class="sr-only">{{__('Wishlist')}}</span>
+                            <div class="flex flex-col justify-center items-center text-gray-500 group-hover:text-danger-500 cursor-pointer transition-colors ease-in-out duration-30">
+                                <i class="bx bxs-heart text-md"></i>
+                            </div>
+                        </x-splade-link>
+
+                        <x-splade-link
+                            modal
+                            :href="route('profile.notifications.index')"
+                            class="block shrink-0 rounded-full border border-gray-500 p-2 text-gray-600 shadow-sm hover:text-gray-700 relative group"
+                        >
+                            @php
+                                $notifications = \TomatoPHP\TomatoNotifications\Models\UserNotification::where('model_id', auth('accounts')->user()->id)->where('model_type', config('tomato-crm.model'))->whereDoesntHave('userRead')->count();
+                            @endphp
+                            @if($notifications)
+                                <div class="absolute top-0 font-bold left-6 bg-white border border-gray-500 shadow-sm text-gray-500 rounded-full text-[10px] w-4 h-4 text-center">
+                                    {{ $notifications }}
+                                </div>
+                            @endif
+                            <span class="sr-only">{{__('Notifications')}}</span>
+                            <div class="flex flex-col justify-center items-center text-gray-500 group-hover:text-primary-500 cursor-pointer transition-colors ease-in-out duration-30">
+                                <i class="bx bxs-bell text-md"></i>
+                            </div>
+                        </x-splade-link>
+                    @endif
                 </div>
 
                 @if(auth('accounts')->user())
@@ -97,14 +135,28 @@
                         $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=mp&s=" . $size;
                     @endphp
 
-                    <x-splade-link href="{{route('profile.index')}}" class="block shrink-0">
-                        <span class="sr-only">{{__('Profile')}}</span>
-                        <img
-                            alt="{{auth('accounts')->user()->name}}"
-                            src="{{$grav_url}}"
-                            class="h-10 w-10 rounded-full object-cover"
-                        />
-                    </x-splade-link>
+
+
+                    <x-tomato-admin-dropdown id="profile-dropdown">
+                        <x-slot:button>
+                            <div class="block shrink-0">
+                                <span class="sr-only">{{__('Profile')}}</span>
+                                <img
+                                    alt="{{auth('accounts')->user()->name}}"
+                                    src="{{$grav_url}}"
+                                    class="h-10 w-10 rounded-full object-cover"
+                                />
+                            </div>
+                        </x-slot:button>
+
+                        <x-tomato-admin-dropdown-item icon="bx bxs-user" type="link" label="{{__('Profile')}}" :href="route('profile.index')" />
+                        <x-tomato-admin-dropdown-item warning icon="bx bxs-map" type="link" label="{{__('Address')}}" :href="route('profile.address.index')" />
+                        <x-tomato-admin-dropdown-item warning icon="bx bxs-rocket" type="link" label="{{__('Orders')}}" :href="route('profile.orders.index')" />
+                        <x-tomato-admin-dropdown-item success icon="bx bxs-wallet" type="link" label="{{__('Wallet')}}" :href="route('profile.wallet.index')" />
+                        <x-tomato-admin-dropdown-item icon="bx bxs-cog" type="link" label="{{__('Settings')}}" :href="route('profile.edit')" />
+                        <x-tomato-admin-dropdown-item danger icon="bx bxs-user" type="link" label="{{__('Logout')}}" :href="route('profile.logout')" />
+
+                    </x-tomato-admin-dropdown>
                 @else
 
                     <div class="sm:flex sm:gap-4">
