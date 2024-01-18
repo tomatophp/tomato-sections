@@ -9,37 +9,6 @@ Sections For Tomato Themes To build any app with Theme Builder
 ```bash
 composer require tomatophp/tomato-sections
 ```
-after install your package please run this command
-
-```bash
-php artisan tomato-sections:install
-```
-
-## Publish Assets
-
-you can publish config file by use this command
-
-```bash
-php artisan vendor:publish --tag="tomato-sections-config"
-```
-
-you can publish views file by use this command
-
-```bash
-php artisan vendor:publish --tag="tomato-sections-views"
-```
-
-you can publish languages file by use this command
-
-```bash
-php artisan vendor:publish --tag="tomato-sections-lang"
-```
-
-you can publish migrations file by use this command
-
-```bash
-php artisan vendor:publish --tag="tomato-sections-migrations"
-```
 
 ## Support
 
