@@ -5,7 +5,7 @@
             <div class="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
                 <h2 class="text-2xl font-bold text-gray-900">{{ $section['title_'. app()->getLocale()] ?? "Categories" }}</h2>
 
-                <div class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
+                <div class="mt-6 gap-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:gap-4">
                     @php $categories = \TomatoPHP\TomatoCategory\Models\Category::whereIn('id', $section['categories'] ?? [])->get() @endphp
                     @foreach($categories as $category)
                         <x-splade-link href="{{url('/shop?categories[]=' . $category->id)}}" class="group relative">
