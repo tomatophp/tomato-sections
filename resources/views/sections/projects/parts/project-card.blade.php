@@ -7,7 +7,7 @@
         $image = "https://ui-avatars.com/api/?name=".$project->title;
     }
 @endphp
-<x-splade-link href="{{ url(app()->getLocale() . '/'.'projects/' . $project->id) }}" class="block">
+<x-splade-link href="{{ url('/projects/' . $project->id) }}" class="block">
     <article
         class="relative overflow-hidden rounded-lg shadow transition hover:shadow-lg"
     >

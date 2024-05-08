@@ -1,5 +1,5 @@
 @php $section = $page->meta($section['uuid']); @endphp
-<section class="font-main"  style="background-color: {{$section['bg_color'] ?? '#efefef'}}; color: {{$section['font_color'] ?? '#000'}}">
+<section class="font-main bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100"  style="@isset($section['bg_color']) background-color: {{$section['bg_color'] ?? '#efefef'}} !important; @endisset @isset($section['font_color']) color: {{$section['font_color'] ?? '#000'}} !important; @endisset">
     <div class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
         <div class="text-center">
             <h1 class="text-4xl font-bold tracking-tight text-center sm:text-3xl text-main">
@@ -34,7 +34,7 @@
                         />
 
                         <div
-                            class="relative bg-gradient-to-t from-gray-900/50 to-gray-900/25 pt-32 sm:pt-48 lg:pt-64"
+                            class="relative bg-gradient-to-t from-zinc-900/50 to-zinc-900/25 pt-32 sm:pt-48 lg:pt-64"
                         >
                             <div class="p-4 sm:p-6">
                                 <div class="flex justify-between">
